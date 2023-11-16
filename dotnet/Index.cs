@@ -1,22 +1,33 @@
 namespace DotNetRuntime;
 
 using System.Text.Json;
+using Appwrite;
+using Appwrite.Services;
+using Appwrite.Models;
 
-public class Handler {
+public class Handler
+{
     static readonly HttpClient http = new();
 
     public async Task<RuntimeOutput> Main(RuntimeContext Context)
     {
         string id = "1";
 
+        // You can log messages to the console
+        Context.Log("Hello, Logs!");
+
+        // If something goes wrong, log an error
+        Context.Error("Hello, Errors!");
+
         if (!(Context.Req.Body is String))
         {
             object? idObject;
-            Dictionary<string, object> body = (Dictionary<string, object>) Context.Req.Body;
+            Dictionary<string, object> body = (Dictionary<string, object>)Context.Req.Body;
             body.TryGetValue("id", out idObject);
 
-            if(idObject != null) {
-                id = ((JsonElement) idObject).ToString();
+            if (idObject != null)
+            {
+                id = ((JsonElement)idObject).ToString();
             }
         }
 
