@@ -8,5 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Appwrite" Version="0.4.2" />
   </ItemGroup>
 </Project>
